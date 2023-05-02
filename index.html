@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Calculator</title>
-  </head>
-  <body>
+
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+  <div id="calculator">
     <h1>Calculator</h1>
     <input type="text" id="result" disabled>
     <br>
+    <div id="button-top">
     <button onclick="clearResult()">C</button>
     <button onclick="addToResult('(')"> ( </button>
     <button onclick="addToResult(')')"> ) </button>
     <button onclick="addToResult('/')"> / </button>
     <br>
+  </div>
+  <div id="button-center">
     <button onclick="addToResult('7')">7</button>
     <button onclick="addToResult('8')">8</button>
     <button onclick="addToResult('9')">9</button>
@@ -27,23 +34,35 @@
     <button onclick="addToResult('3')">3</button>
     <button onclick="addToResult('+')">+</button>
     <br>
+  </div>
+  <div id="button-bottom">
+    <button onclick="deleteEntry('del')">del</button>
     <button onclick="addToResult('0')">0</button>
     <button onclick="addToResult('.')">.</button>
     <button onclick="calculate()">=</button>
     <br>
-    <script>
-      function addToResult(value) {
-        document.getElementById("result").value += value;
-      }
+  </div>
+  </div>
+  <script>
+    function addToResult(value) {
+      document.getElementById("result").value += value;
+    }
 
-      function clearResult() {
-        document.getElementById("result").value = "";
-      }
+    function clearResult() {
+      document.getElementById("result").value = "";
+    }
 
-      function calculate() {
-        var result = eval(document.getElementById("result").value);
-        document.getElementById("result").value = result;
-      }
-    </script>
-  </body>
+    function deleteEntry() {
+      let entry = document.getElementById("result").value;
+      entry = entry.slice(0,-1);
+      document.getElementById("result").value = entry;
+    }
+
+    function calculate() {
+      let result = eval(document.getElementById("result").value);
+      document.getElementById("result").value = result;
+    }
+  </script>
+</body>
+
 </html>
